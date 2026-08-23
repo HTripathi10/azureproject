@@ -1,0 +1,15 @@
+{
+	"name": "harshit-df-azureproject",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cb09b375-77eb-4393-85f8-a79ff6011f73",
+		"tenantId": "65054bfa-44e1-4571-a318-f2749ec4221c"
+	}
+}
