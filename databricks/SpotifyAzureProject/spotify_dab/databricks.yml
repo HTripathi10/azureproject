@@ -1,0 +1,36 @@
+# This is a Declarative Automation Bundle definition for spotify_dab.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: spotify_dab
+  uuid: 6dca1700-4b32-421e-8e5d-49752ba7d9d1
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405606497517045.5.azuredatabricks.net
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+    presets:
+      source_linked_deployment: false
+    variables:
+      catalog: spotify_cata
+      schema: dev
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-7405606497517045.5.azuredatabricks.net
+      root_path: /Workspace/PROD/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: spotify_cata
+      schema: prod
+    permissions:
+      - user_name: htripathi.4444@gmail.com
+        level: CAN_MANAGE
